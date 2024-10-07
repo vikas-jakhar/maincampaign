@@ -2,6 +2,8 @@
 import React, { useState, useRef } from 'react'
 import Harder from '../common/Harder'
 import Icon from '../common/Icons';
+import Image from 'next/image';
+import Card from './Card';
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState<number>(3);
@@ -13,7 +15,7 @@ const Hero = () => {
 
     const openDatePicker = () => {
         if (dateInputRef.current) {
-            dateInputRef.current.showPicker(); 
+            dateInputRef.current.showPicker();
         }
     };
 
@@ -32,12 +34,22 @@ const Hero = () => {
                                 {idx === 0 ? "24 hours" : idx === 1 ? "7 days" : idx === 2 ? "30 days" : "1 year"}
                             </button>
                         ))}
-                        <button onClick={openDatePicker} className="w-[50px] h-[50px] overflow-hidden cursor-pointer relative grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
-                            <Icon iconName='calendarIcon' className='cursor-pointer' />
+                        <button onClick={openDatePicker} className="w-[50px] h-[50px] transition_slow hover:scale-95 ml-2.5 overflow-hidden relative grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
+                            <Icon iconName='calendarIcon' className='cursor-pointer relative z-10' />
+                            <input ref={dateInputRef} type="date" className='right-0 opacity-0 absolute -bottom-1/2 left-0' />
                         </button>
-                        <input ref={dateInputRef} type="date" className='right-0 z-10' />
+                        {[...Array(2)].map((_, index) => (
+                            <button key={index} className="w-[50px] h-[50px] transition_slow hover:scale-95 ml-3.5 grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
+                                <Icon iconName={index === 0 ? "graySettingIcon" : "bellIcon"} className='cursor-pointer relative z-10' />
+                            </button>
+                        ))}
+                        <button className="relative w-[57] h-[57px] ml-7 pl-0.5 ">
+                            <Image src='/assets/images/webp/logo.png' className='max-w-[57px] w-full' alt='icon' width={114} height={114} priority />
+                            <Icon iconName='tickIcon' className='absolute bottom-0 -right-1.5' />
+                        </button>
                     </div>
                 </div>
+                <Card />
             </div>
         </div>
     )

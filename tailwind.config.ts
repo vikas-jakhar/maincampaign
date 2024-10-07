@@ -18,7 +18,7 @@ const config: Config = {
       },
       fontSize: {
         'custom-xl': "32px",
-      }
+      },
     },
   },
   plugins: [],
