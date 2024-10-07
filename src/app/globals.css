@@ -20,15 +20,22 @@
     font-family: "THICCCBOI SemiBold";
     src: url('../app/font/thicccboi/THICCCBOI-SemiBold.ttf');
 }
+@font-face {
+    font-family: "THICCCBOI Medium";
+    src: url('../app/font/thicccboi/THICCCBOI-Medium.ttf');
+}
 
-._normal {
+.thicccboi_normal {
     font-family: "THICCCBOI", sans-serif;
 }
 
-.machina_regular {
+.thicccboi_regular {
     font-family: "THICCCBOI", sans-serif;
 }
 
-.machina_SemiBold {
+.thicccboi_SemiBold {
+    font-family: "THICCCBOI", sans-serif;
+}
+.thicccboi_medium {
     font-family: "THICCCBOI", sans-serif;
 }

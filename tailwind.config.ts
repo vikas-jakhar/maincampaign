@@ -12,18 +12,13 @@ const config: Config = {
         'deep-blue': "#3B5998",
         'off-gray': "#7D889E",
         'light-gray': "#D9D9D9",
+        'medium-gray': "#CECECE80",
         'off-white': "#FAF9F6",
+        'off-red': "#FB5656",
       },
-      container: {
-        center: true,
-        padding: "24px",
-        screens: {
-          sm: "640px",
-          md: "768px",
-          lg: "1024px",
-          xl: "1188px",
-        },
-      },
+      fontSize: {
+        'custom-xl': "32px",
+      }
     },
   },
   plugins: [],
