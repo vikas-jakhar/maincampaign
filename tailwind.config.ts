@@ -9,8 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'deep-blue': "#3B5998",
+        'off-gray': "#7D889E",
+        'light-gray': "#D9D9D9",
+        'off-white': "#FAF9F6",
+      },
+      container: {
+        center: true,
+        padding: "24px",
+        screens: {
+          sm: "640px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1188px",
+        },
       },
     },
   },
