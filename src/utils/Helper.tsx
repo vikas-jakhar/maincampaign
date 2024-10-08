@@ -14,3 +14,9 @@ export const COUNTIRES_DATA = [
     { img: "/assets/images/webp/united-kingdom.png", name: "United Kingdom", data: "41.2k" },
     { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k" },
 ]
+export const ALLCOUNTRY_DATA = [
+    { img: "/assets/images/webp/united-kingdom.png", name: "United Kingdom", data: "41.2k" },
+    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k" },
+    { img: "/assets/images/webp/united-states.png", name: "United States", data: "50.2k" },
+    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k" },
+]
