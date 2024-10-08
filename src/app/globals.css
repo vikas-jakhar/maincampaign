@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,9 +19,15 @@
 }
 
 @font-face {
-    font-family: "THICCCBOI SemiBold";
+    font-family: "THICCCBOI semiBold";
     src: url('../app/font/thicccboi/THICCCBOI-SemiBold.ttf');
 }
+
+@font-face {
+    font-family: "THICCCBOI bold";
+    src: url('../app/font/thicccboi/THICCCBOI-Bold.ttf');
+}
+
 @font-face {
     font-family: "THICCCBOI Medium";
     src: url('../app/font/thicccboi/THICCCBOI-Medium.ttf');
@@ -33,9 +41,14 @@
     font-family: "THICCCBOI", sans-serif;
 }
 
-.thicccboi_SemiBold {
+.thicccboi_semiBold {
     font-family: "THICCCBOI", sans-serif;
 }
+
+.thicccboi_bold {
+    font-family: "THICCCBOI", sans-serif;
+}
+
 .thicccboi_medium {
     font-family: "THICCCBOI", sans-serif;
 }

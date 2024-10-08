@@ -4,6 +4,7 @@ import Harder from '../common/Harder'
 import Icon from '../common/Icons';
 import Image from 'next/image';
 import Card from './Card';
+import Graph from './Graph';
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState<number>(3);
@@ -22,10 +23,10 @@ const Hero = () => {
     return (
         <div className='bg-off-white w-full pr-1 flex'>
             <Harder />
-            <div className="ml-5 max-w-[1490px] w-full mt-7 pt-0.5 mr-14">
+            <div className="ml-5 max-w-[1490px] w-full mt-7 mr-3">
                 <div className="bg-white border border-medium-gray rounded-[18px] flex justify-between w-full py-4 px-5">
                     <div className="ml-1">
-                        <h2 className='thicccboi_SemiBold font-semibold text-custom-xl'>Welcome Back!</h2>
+                        <h2 className='thicccboi_semiBold font-semibold text-custom-xl'>Welcome Back!</h2>
                         <p className='font-normal thicccboi_regular text-base text-off-gray'>Track your Facebook Data Analytics here</p>
                     </div>
                     <div className="flex items-center">
@@ -43,13 +44,14 @@ const Hero = () => {
                                 <Icon iconName={index === 0 ? "graySettingIcon" : "bellIcon"} className='cursor-pointer relative z-10' />
                             </button>
                         ))}
-                        <button className="relative w-[57] h-[57px] ml-7 pl-0.5 ">
+                        <button className="relative w-[57] h-[57px] ml-7 pl-0.5 transition_slow hover:scale-95">
                             <Image src='/assets/images/webp/logo.png' className='max-w-[57px] w-full' alt='icon' width={114} height={114} priority />
                             <Icon iconName='tickIcon' className='absolute bottom-0 -right-1.5' />
                         </button>
                     </div>
                 </div>
                 <Card />
+                <Graph />
             </div>
         </div>
     )
