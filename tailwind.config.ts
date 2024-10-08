@@ -9,7 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'plex': "IBM Plex Mono', monospace",
+        'plex': "'IBM Plex Mono', monospace",
+        'thicccboi-normal': "'THICCCBOI', sans-serif",
+        'thicccboi-semiBold': "'THICCCBOI', sans-serif",
+        'thicccboi-bold': "'THICCCBOI', sans-serif",
+        'thicccboi-medium': "'THICCCBOI', sans-serif",
+        'thicccboi-regular': "'THICCCBOI', sans-serif",
+      },
+      backgroundImage: {
+        "linear-green": "linear-gradient(180deg, #88FFBF 0%, rgba(62, 254, 151, 0.17) 100%)"
       },
       colors: {
         'deep-blue': "#3B5998",
@@ -24,6 +32,7 @@ const config: Config = {
         'off-pink': "#ED58BA",
       },
       fontSize: {
+        'custom-lg': "26px",
         'custom-xl': "32px",
       },
       boxShadow: {

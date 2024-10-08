@@ -5,6 +5,7 @@ import Icon from '../common/Icons';
 import Image from 'next/image';
 import Card from './Card';
 import Graph from './Graph';
+import Map from './Map';
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState<number>(3);
@@ -26,12 +27,12 @@ const Hero = () => {
             <div className="ml-5 max-w-[1490px] w-full mt-7 mr-3">
                 <div className="bg-white border border-medium-gray rounded-[18px] flex justify-between w-full py-4 px-5">
                     <div className="ml-1">
-                        <h2 className='thicccboi_semiBold font-semibold text-custom-xl'>Welcome Back!</h2>
-                        <p className='font-normal thicccboi_regular text-base text-off-gray'>Track your Facebook Data Analytics here</p>
+                        <h2 className='font-thicccboi-semiBold font-semibold text-custom-xl'>Welcome Back!</h2>
+                        <p className='font-normal font-thicccboi-regular text-base text-off-gray'>Track your Facebook Data Analytics here</p>
                     </div>
                     <div className="flex items-center">
                         {[...Array(4)].map((_, idx) => (
-                            <button key={idx} onClick={() => handleToggle(idx)} className={`font-medium text-sm thicccboi_medium backdrop-blur-xl h-10 border transition_slow hover:scale-95 rounded-full ${activeIndex === idx ? "bg-deep-blue border-deep-blue text-white" : "border-light-gray text-off-gray bg-off-white"} ${idx === 0 ? "w-[87px]" : "w-[77px] mx-2"}`}>
+                            <button key={idx} onClick={() => handleToggle(idx)} className={`font-medium text-sm font-thicccboi-medium backdrop-blur-xl h-10 border transition_slow hover:scale-95 rounded-full ${activeIndex === idx ? "bg-deep-blue border-deep-blue text-white" : "border-light-gray text-off-gray bg-off-white"} ${idx === 0 ? "w-[87px]" : "w-[77px] mx-2"}`}>
                                 {idx === 0 ? "24 hours" : idx === 1 ? "7 days" : idx === 2 ? "30 days" : "1 year"}
                             </button>
                         ))}
@@ -52,6 +53,7 @@ const Hero = () => {
                 </div>
                 <Card />
                 <Graph />
+                <Map />
             </div>
         </div>
     )
