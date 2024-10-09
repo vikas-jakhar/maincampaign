@@ -7,57 +7,67 @@ import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement
 // Register the required components
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Filler, Tooltip, Legend);
 
-const LineChart: React.FC = () => {
+const LineChart: React.FC<{ lineColor: string; fillColor: string }> = ({ lineColor, fillColor }) => {
     const [chartData, setChartData] = useState({
-        labels: Array.from({ length: 20 }, (_, i) => `Time ${i}`), // Create initial labels
+        labels: Array.from({ length: 20 }, (_, i) => `Time ${i}`),
         datasets: [
             {
-                label: 'FPS Meter',
-                data: Array.from({ length: 20 }, () => Math.floor(Math.random() * 60) + 1), // Initial random data points
-                fill: true, // Enable filling under the line
-                backgroundColor: 'rgba(144, 238, 144, 0.5)', // Light green fill color
-                borderColor: 'rgba(75, 192, 192, 1)', // Line color
-                borderWidth: 2, // Increase line width for better visibility
-                tension: 0.4, // Smooth lines
-                pointRadius: 0, // Remove dots on the line
-                pointHitRadius: 0, // Remove hit radius for points
+                label: 'Live Price Data',
+                data: Array.from({ length: 20 }, () => Math.floor(Math.random() * 100) + 1),
+                fill: true,
+                backgroundColor: fillColor, // Use the fill color passed in as a prop
+                borderColor: lineColor, // Use the line color passed in as a prop
+                borderWidth: 3,
+                tension: 0.4,
+                pointRadius: 0,
+                pointHoverRadius: 10,
             },
         ],
     });
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        let updateCount = 0; // Counter to track how many times data has been updated
+
+        const fetchLiveData = async () => {
+            const newDataPoint = Math.floor(Math.random() * 100) + 1; // Simulate live data
+
             setChartData(prevData => {
-                // Remove the oldest label and data point, and add new ones
-                const newLabel = `Time ${prevData.labels.length}`;
-                const newDataPoint = Math.floor(Math.random() * 60) + 1; // Simulate FPS values between 1 and 60
+                const newLabels = [`Time ${prevData.labels.length}`, ...prevData.labels.slice(0, prevData.labels.length - 1)]; // Shift labels right
+                const newData = [newDataPoint, ...prevData.datasets[0].data.slice(0, prevData.datasets[0].data.length - 1)]; // Shift data right
 
                 return {
-                    labels: [...prevData.labels.slice(1), newLabel], // Shift labels left
+                    labels: newLabels,
                     datasets: [
                         {
                             ...prevData.datasets[0],
-                            data: [...prevData.datasets[0].data.slice(1), newDataPoint], // Shift data left
+                            data: newData, // Replace dataset with shifted data
                         },
                     ],
                 };
             });
-        }, 1000); // Update every second
+
+            updateCount += 1; // Increment the counter
+            if (updateCount >= 3) { // Stop after 50 updates
+                clearInterval(interval); // Stop data updates
+            }
+        };
+
+        const interval = setInterval(fetchLiveData, 700); // Update every 700ms
 
         return () => clearInterval(interval); // Cleanup on component unmount
     }, []);
 
     return (
-        <div style={{ height: '40px' }}>
+        <div className='h-40 w-[150%] absolute -bottom-12 -left-5'>
             <Line
                 data={chartData}
                 options={{
                     animation: {
-                        duration: 500, // Duration for the overall animation of the dataset changes
+                        duration: 1000, // Animation when new data is added
                     },
                     elements: {
                         point: {
-                            radius: 0, // Set point radius to 0 to remove dots
+                            radius: 0, // Hide points
                         },
                     },
                     scales: {
@@ -72,19 +82,24 @@ const LineChart: React.FC = () => {
                             grid: {
                                 display: false, // Hide y-axis grid lines
                             },
+                            min: Math.min(...chartData.datasets[0].data) - 100, // Small buffer for dynamic min
+                            max: Math.max(...chartData.datasets[0].data) + 150, // Small buffer for dynamic max
                         },
                     },
                     plugins: {
                         tooltip: {
-                            enabled: false, // Disable tooltips
+                            enabled: true, // Enable tooltips for data
+                            callbacks: {
+                                label: (tooltipItem) => `$${tooltipItem.raw}`, // Format tooltip to show dollar values
+                            },
                         },
                         legend: {
                             display: false, // Hide the legend
                         },
                     },
-                    maintainAspectRatio: false, // Prevent maintaining aspect ratio to allow custom height
+                    maintainAspectRatio: false, // Allow chart to stretch to parent height/width
+                    responsive: true, // Make the chart responsive
                 }}
-                height={40} // Set height to 40 pixels
             />
         </div>
     );

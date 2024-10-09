@@ -17,7 +17,7 @@ const config: Config = {
         'thicccboi-regular': "'THICCCBOI', sans-serif",
       },
       backgroundImage: {
-        "linear-green": "linear-gradient(180deg, #88FFBF 0%, rgba(62, 254, 151, 0.17) 100%)"
+        "linear-green": "linear-gradient(180deg, #88FFBF 0%, rgba(62, 254, 151, 0.17) 100%)",
       },
       colors: {
         'deep-blue': "#3B5998",

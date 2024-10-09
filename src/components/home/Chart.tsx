@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
     Chart as ChartJS,
     BarElement,
@@ -7,7 +7,8 @@ import {
     Title,
     Tooltip,
     Legend,
-    ChartOptions // Import the ChartOptions type
+    ChartOptions,
+    ChartData,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
@@ -15,8 +16,10 @@ import { Bar } from 'react-chartjs-2';
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const Chart: React.FC = () => {
-    // Define the chart data
-    const data = {
+    const chartRef = useRef<any>(null); // Initialize the ref for the chart
+
+    // Define the chart data as a simple object
+    const data: ChartData<'bar'> = {
         labels: [
             'Jun 2021', 'Jul 2021', 'Aug 2021', 'Sep 2021',
             'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022',
@@ -24,46 +27,81 @@ const Chart: React.FC = () => {
         ],
         datasets: [
             {
-                label: 'Series 1', // Dark blue bars
-                data: [20, 25, 15, 22, 18, 24, 21, 27, 23, 17, 24, 28, 26], // Example data
-                backgroundColor: 'rgba(0, 80, 160, 0.9)', // Dark blue
-                borderWidth: 1
+                label: 'Leads',
+                data: [20000, 25000, 7500, 14000, 11000, 22000, 22000, 9000, 18000, 6000, 13000, 29000, 16000],
+                backgroundColor: '#3B5998',
+                borderWidth: 3,
+                borderColor: '#FFFFFF',
+                hoverBorderColor: '#FFFFFF',
+                barThickness: 15,
             },
             {
-                label: 'Series 2', // Light green bars
-                data: [18, 14, 20, 23, 24, 20, 15, 18, 21, 14, 22, 25, 28], // Example data
-                backgroundColor: 'rgba(144, 238, 144, 0.8)', // Light green
-                borderWidth: 1
-            }
-        ]
+                label: 'Revenue',
+                data: [15000, 10000, 12000, 20000, 19000, 17000, 20500, 10000, 15000, 9000, 13000, 18000, 30000],
+                backgroundColor: (context: { chart: { ctx: CanvasRenderingContext2D; chartArea: { top: number; bottom: number } } }) => {
+                    const chart = context.chart;
+                    const { ctx, chartArea } = chart;
+
+                    if (!chartArea) {
+                        return '#88FFBF'; // Default color in case of no chart area
+                    }
+                    return getGradient(ctx, chartArea);
+                },
+                borderWidth: 3,
+                borderColor: '#FFFFFF',
+                hoverBorderColor: '#FFFFFF',
+                barThickness: 15,
+            },
+        ],
     };
 
-    // Explicitly define the type for chart options
+    // Function to create a gradient for the "Revenue" bars
+    const getGradient = (ctx: CanvasRenderingContext2D, chartArea: any) => {
+        const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+        gradient.addColorStop(0, '#88FFBF');
+        gradient.addColorStop(1, 'rgba(62, 254, 151, 0.12)');
+        return gradient;
+    };
+
+    // Define chart options without specific typing
     const options: ChartOptions<'bar'> = {
         responsive: true,
         scales: {
             y: {
-                beginAtZero: true,
+                beginAtZero: false,
                 ticks: {
-                    stepSize: 5 // Adjust based on the data range
-                }
-            }
+                    display: true,
+                },
+                grid: {
+                    display: false,
+                },
+                min: 1000,
+                max: 30000,
+            },
+            x: {
+                ticks: {
+                    display: true,
+                },
+                grid: {
+                    display: false,
+                },
+            },
         },
         plugins: {
             title: {
-                display: true,
-                text: 'Monthly Data from Jun 2021 to Jun 2022'
+                display: false,
+                text: 'Monthly Data from Jun 2021 to Jun 2022',
             },
             legend: {
-                display: true,
-                position: 'top' // You can change this to 'left', 'right', or 'bottom'
-            }
-        }
+                display: false,
+                position: 'top',
+            },
+        },
     };
 
     return (
         <div>
-            <Bar data={data} options={options} />
+            <Bar data={data} options={options} ref={chartRef} />
         </div>
     );
 };

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Icon from "../common/Icons";
 import { COUNTIRES_DATA, ALLCOUNTRY_DATA } from "@/utils/Helper";
+import AgeGroupChart from "./AgeGroupChart";
 
 interface Country {
     name: string;
@@ -50,6 +51,7 @@ const Map = () => {
                                 {selectedCountry.data}
                             </p>
                         </div>
+                        <AgeGroupChart />
                     </div>
                     {COUNTIRES_DATA.slice(0, 3).map((country: Country, idx: number) => (
                         <div
