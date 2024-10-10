@@ -79,9 +79,9 @@ const Chart: React.FC = () => {
     };
 
     return (
-        <div className='max-w-[964px] w-full ml-auto h-[262px]'>
+        <div className='max-w-[964px] w-full md:ml-auto h-[262px]'>
             <Bar data={data} options={options} ref={chartRef} />
-            <div className="flex items-center justify-between px-3 mt-5">
+            <div className="flex items-center justify-between px-3 md:mt-5 mt-2">
                 {[...Array(13)].map((_, idx) => (
                     <div key={idx} className="flex flex-col items-center">
                         <p className='font-normal text-off-gray text-center font-thicccboi-normal text-sm'>{idx === 0 ? "Jun" : idx === 1 ? "Jul" : idx === 2 ? "Aug" : idx === 3 ? "Sep" : idx === 4 ? "Oct" : idx === 5 ? "Nov" : idx === 6 ? "Dec" : idx === 7 ? "Jan" : idx === 8 ? "Feb" : idx === 9 ? "Mar" : idx === 10 ? "Apr" : idx === 11 ? "May" : "Jun"}</p>

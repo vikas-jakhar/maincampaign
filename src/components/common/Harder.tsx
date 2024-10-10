@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Icon from './Icons'
 import Link from 'next/link'
 
@@ -8,10 +8,30 @@ const Harder = () => {
     const handleToggle = (index: number) => {
         setActiveIndex(index);
     };
+    const [open, setOpen] = useState(false);
+    const ToggleOpen = () => {
+        if (window.innerWidth < 1024) {
+            setOpen((prevOpen) => !prevOpen);
+        }
+    };
+    useEffect(() => {
+        const handleOverflow = () => {
+            if (open && window.innerWidth < 1024) {
+                document.body.classList.add("overflow-hidden");
+            } else {
+                document.body.classList.remove("overflow-hidden");
+            }
+        };
+        handleOverflow();
+        window.addEventListener("resize", handleOverflow);
+        return () => {
+            window.removeEventListener("resize", handleOverflow);
+        };
+    }, [open]);
 
     return (
-        <div className="min-h-screen w-full max-w-[250px] 2xl:max-w-[300px]">
-            <div className='fixed top-0 left-0 min-h-screen w-full max-w-[250px] 2xl:max-w-[300px] flex flex-col justify-between bg-white p-3.5'>
+        <div className="lg:min-h-screen absolute lg:z-50 lg:relative lg:px-[125px] 2xl:px-[150px]">
+            <div className={`fixed top-0 lg:left-0 min-h-screen duration-300 ease-linear z-50 w-full max-w-[250px] 2xl:max-w-[300px] flex flex-col justify-between bg-white p-3.5 ${open ? "left-0" : "-left-full"}`}>
                 <div className="mt-12 pt-1">
                     <Link href='/' className='mx-auto w-fit flex'>
                         <Icon iconName='ainIcon' />
@@ -34,6 +54,9 @@ const Harder = () => {
                     <Icon iconName='logoutIcon' />
                     Logout
                 </Link>
+            </div>
+            <div onClick={ToggleOpen} className="fixed w-10 h-10 bg-white font-plex duration-300 ease-linear font-medium text-xs top-0 left-0 lg:hidden z-[150] border-e-2 border-b-2 grid place-items-center border-light-gray shadow-3xl">
+                {open ? "Close" : "Menu"}
             </div>
         </div>
     )
