@@ -1,14 +1,15 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import Icon from "../common/Icons";
 import { COUNTIRES_DATA, ALLCOUNTRY_DATA } from "@/utils/Helper";
 import AgeGroupChart from "./AgeGroupChart";
+// import WorldMap from "./WorldMap";
 
 interface Country {
     name: string;
     img: string;
     data: string;
+    ageData: number[];  
 }
 
 const Map = () => {
@@ -16,21 +17,23 @@ const Map = () => {
         name: "United States",
         img: "/assets/images/webp/united-states.png",
         data: "50.2k",
+        ageData: [80, 60, 40, 20],  
     });
-    const [showModal, setShowModal] = useState(false); // State to toggle modal visibility
+    const [showModal, setShowModal] = useState(false);
     const handleCountryClick = (country: Country) => {
         setSelectedCountry(country);
-        setShowModal(false); // Close modal when country is selected
+        setShowModal(false);
     };
     const toggleModal = () => {
         setShowModal((prev) => !prev);
     };
+
     return (
-        <div className="mt-7 border border-medium-gray bg-white shadow-4xl rounded-[18px] pl-7 pr-3 py-7">
+        <div className="mt-7 border border-medium-gray bg-white shadow-4xl rounded-[18px] mb-14 pl-7 pr-3 py-7">
             <div className="flex gap-3 items-start justify-between">
                 <div className="flex flex-col max-w-[1054px] w-full">
                     <p className="text-xl text-off-gray font-bold font-thicccboi-bold mb-7">Your top demographics</p>
-                    <Icon className="max-w-[1042px] w-full" iconName="mapIcon" />
+                    {/* <WorldMap /> */}
                 </div>
                 <div className="max-w-[376px] w-full border-s border-medium-gray h-full pl-3 relative">
                     <p className="font-semibold font-thicccboi-semiBold text-3xl ml-5 flex items-center gap-2">225.25k</p>
@@ -51,7 +54,8 @@ const Map = () => {
                                 {selectedCountry.data}
                             </p>
                         </div>
-                        <AgeGroupChart />
+                        {/* Pass the ageData prop to AgeGroupChart */}
+                        <AgeGroupChart ageData={selectedCountry.ageData} />
                     </div>
                     {COUNTIRES_DATA.slice(0, 3).map((country: Country, idx: number) => (
                         <div
@@ -85,7 +89,6 @@ const Map = () => {
                     </div>
                 </div>
             </div>
-            {/* Modal */}
             {showModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg max-w-[600px] w-full p-5">

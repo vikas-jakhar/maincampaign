@@ -10,8 +10,8 @@ const Harder = () => {
     };
 
     return (
-        <div className="min-h-screen w-full max-w-[300px]">
-            <div className='fixed top-0 left-0 min-h-screen w-[300px] flex flex-col justify-between bg-white p-3.5'>
+        <div className="min-h-screen w-full max-w-[250px] 2xl:max-w-[300px]">
+            <div className='fixed top-0 left-0 min-h-screen w-full max-w-[250px] 2xl:max-w-[300px] flex flex-col justify-between bg-white p-3.5'>
                 <div className="mt-12 pt-1">
                     <Link href='/' className='mx-auto w-fit flex'>
                         <Icon iconName='ainIcon' />

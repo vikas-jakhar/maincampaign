@@ -4,7 +4,7 @@ import Chart from './Chart'
 const Graph = () => {
     return (
         <div className='mt-7 border border-medium-gray bg-white shadow-4xl rounded-[18px] px-7 pt-5 pb-7'>
-            <div className="flex gap-11 items-start justify-between">
+            <div className="flex gap-2 2xl:gap-11 items-start justify-between">
                 <div className="max-w-[1054px] w-full">
                     <div className="flex justify-between items-center">
                         <div className="flex flex-col">
@@ -23,7 +23,14 @@ const Graph = () => {
                             </div>
                         </div>
                     </div>
-                    <Chart />
+                    <div className="flex gap-6 mt-11">
+                        <div className="flex flex-col h-full justify-between min-h-[262px]">
+                            {[...Array(7)].map((_, idx) => (
+                                <p key={idx} className='font-normal text-off-gray text-right font-thicccboi-normal text-sm'>{idx === 0 ? "30k" : idx === 1 ? "20k" : idx === 2 ? "15k" : idx === 3 ? "10k" : idx === 4 ? "6k" : idx === 5 ? "3k" : "1k"}</p>
+                            ))}
+                        </div>
+                        <Chart />
+                    </div>
                 </div>
                 <div className="max-w-[376px] mt-2.5 w-full border-s border-medium-gray h-full pl-6 relative">
                     {GRAPH_DATA.map((items, idx) => (

@@ -11,12 +11,12 @@ export const GRAPH_DATA = [
     { text: "Cost Per Click", data: "$25.9" },
 ]
 export const COUNTIRES_DATA = [
-    { img: "/assets/images/webp/united-kingdom.png", name: "United Kingdom", data: "41.2k" },
-    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k" },
-]
+    { img: "/assets/images/webp/united-kingdom.png", name: "United Kingdom", data: "41.2k", ageData: [10, 50, 30, 70] },
+    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k", ageData: [60, 40, 20, 80] },
+];
 export const ALLCOUNTRY_DATA = [
-    { img: "/assets/images/webp/united-kingdom.png", name: "United Kingdom", data: "41.2k" },
-    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k" },
-    { img: "/assets/images/webp/united-states.png", name: "United States", data: "50.2k" },
-    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k" },
+    { img: "/assets/images/webp/united-kingdom.png", name: "United Kingdom", data: "41.2k", ageData: [10, 50, 30, 70] },
+    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k", ageData: [60, 40, 20, 80] },
+    { img: "/assets/images/webp/united-states.png", name: "United States", data: "50.2k", ageData: [80, 60, 40, 20] },
+    { img: "/assets/images/webp/australia.png", name: "Australia", data: "24.2k", ageData: [60, 40, 20, 80] },
 ]

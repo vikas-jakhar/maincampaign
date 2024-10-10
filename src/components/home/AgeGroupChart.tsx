@@ -1,69 +1,80 @@
-"use client"; // Ensure the component is rendered on the client side
-
+"use client";
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend, TooltipItem } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend, Title } from 'chart.js';
 
-// Register the required components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend, Title);
 
-const AgeGroupChart: React.FC = () => {
-    // Define the data
+interface AgeGroupChartProps {
+    ageData: number[];
+}
+
+const AgeGroupChart: React.FC<AgeGroupChartProps> = ({ ageData }) => {
     const data = {
-        labels: ['18-24', '25-34', '45-54', '65+'], // Age groups
+        labels: ['18-24', '25-34', '45-54', '65+'],
         datasets: [
             {
                 label: 'Percentage',
-                data: [30, 50, 20, 40], // Example data for each age group
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.5)', // Light color for each bar
-                    'rgba(255, 159, 64, 0.5)',
-                    'rgba(153, 102, 255, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)', // Dark color for each bar
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 99, 132, 1)',
-                ],
-                borderWidth: 1,
+                data: ageData,
+                backgroundColor: '#3B5998',
+                borderColor: '#FAF9F6',
+                borderWidth: 0,
+                barThickness: 19,
             },
         ],
     };
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
+                display: false,
+            },
+            title: {
                 display: true,
+                text: 'Age Group',
+                font: {
+                    size: 10,
+                },
+                padding: {
+                    top: 10,
+                },
             },
             tooltip: {
                 callbacks: {
-                    label: (tooltipItem: TooltipItem<'bar'>) => `${tooltipItem.dataset.label}: ${tooltipItem.raw}%`, // Format tooltip
+                    label: (tooltipItem: any) => `${tooltipItem.dataset.label}: ${tooltipItem.raw}%`,
                 },
             },
         },
         scales: {
             y: {
-                beginAtZero: true, // Start y-axis at 0
-                max: 100, // Maximum value on y-axis
-                title: {
-                    display: true,
-                    text: 'Percentage (%)',
+                beginAtZero: true,
+                min: 0,
+                max: 100,
+                ticks: {
+                    stepSize: 20,
+                    callback: (value: any) => value === 0 ? '' : `${value}%`,
+                    autoSkip: false,
+                },
+                grid: {
+                    display: false,
                 },
             },
             x: {
                 title: {
-                    display: true,
+                    display: false,
                     text: 'Age Groups',
+                },
+                grid: {
+                    display: false,
                 },
             },
         },
     };
 
     return (
-        <div className="h-60">
+        <div className="h-48">
             <Bar data={data} options={options} />
         </div>
     );

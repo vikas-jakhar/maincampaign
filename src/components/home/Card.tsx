@@ -6,7 +6,7 @@ const Card = () => {
     return (
         <div className='flex flex-row flex-wrap -mx-3.5 mt-4'>
             {CARD_DATA.map((items, idx) => (
-                <div key={idx} className="2xl:w-[20%] xl:w-4/12 px-3.5">
+                <div key={idx} className="2xl:w-[20%] xl:w-4/12 px-3.5 mt-3.5 2xl:mt-0">
                     <div className="w-full h-full bg-white border relative overflow-hidden pb-16 border-medium-gray rounded-[18px] shadow-3xl pt-5 px-2 min-h-[159px]">
                         <div className="ml-2.5 flex items-center justify-between gap-2">
                             <p className="text-off-gray text-xl font-semibold font-thicccboi-semiBold flex items-center gap-2.5">{items.title} <Icon iconName="dotIcon" /></p>
