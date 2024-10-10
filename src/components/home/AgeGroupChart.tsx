@@ -1,7 +1,17 @@
 "use client";
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend, Title } from 'chart.js';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Tooltip,
+    Legend,
+    Title,
+    TooltipItem,
+    ChartOptions
+} from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend, Title);
 
@@ -24,7 +34,8 @@ const AgeGroupChart: React.FC<AgeGroupChartProps> = ({ ageData }) => {
         ],
     };
 
-    const options = {
+    // Explicitly typing options as ChartOptions<'bar'>
+    const options: ChartOptions<'bar'> = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -43,7 +54,7 @@ const AgeGroupChart: React.FC<AgeGroupChartProps> = ({ ageData }) => {
             },
             tooltip: {
                 callbacks: {
-                    label: (tooltipItem: any) => `${tooltipItem.dataset.label}: ${tooltipItem.raw}%`,
+                    label: (tooltipItem: TooltipItem<'bar'>) => `${tooltipItem.dataset.label}: ${tooltipItem.raw}%`,
                 },
             },
         },
@@ -54,7 +65,12 @@ const AgeGroupChart: React.FC<AgeGroupChartProps> = ({ ageData }) => {
                 max: 100,
                 ticks: {
                     stepSize: 20,
-                    callback: (value: any) => value === 0 ? '' : `${value}%`,
+                    callback: (value: string | number) => {
+                        if (typeof value === 'number' && value === 0) {
+                            return '';
+                        }
+                        return `${value}%`;
+                    },
                     autoSkip: false,
                 },
                 grid: {
@@ -64,7 +80,6 @@ const AgeGroupChart: React.FC<AgeGroupChartProps> = ({ ageData }) => {
             x: {
                 title: {
                     display: false,
-                    text: 'Age Groups',
                 },
                 grid: {
                     display: false,

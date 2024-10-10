@@ -22,7 +22,7 @@ const Hero = () => {
     return (
         <div className='bg-off-white w-full 2xl:pr-1 flex overflow-hidden p-px'>
             <Harder />
-            <div className="lg:pl-5 max-w-[1490px] w-full mt-7 px-3 lg:pr-3">
+            <div className="lg:pl-5 max-w-[1490px] w-full mt-7 px-3 lg:pr-3 2xl:p-0 2xl:ml-5 2xl:mr-3">
                 <div className="bg-white border xl:flex-row flex-col border-medium-gray rounded-[18px] flex justify-center xl:justify-between w-full py-4 px-5">
                     <div className="ml-1">
                         <h2 className='font-thicccboi-semiBold font-semibold text-center sm:text-left text-custom-xl'>Welcome Back!</h2>
