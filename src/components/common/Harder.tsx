@@ -31,7 +31,7 @@ const Harder = () => {
 
     return (
         <div className="lg:min-h-screen absolute lg:z-50 lg:relative lg:px-[125px] 2xl:px-[150px]">
-            <div className={`fixed top-0 lg:left-0 min-h-screen duration-300 ease-linear z-50 w-full max-w-[250px] 2xl:max-w-[300px] flex flex-col justify-between bg-white p-3.5 ${open ? "left-0" : "-left-full"}`}>
+            <div className={`fixed top-0 lg:left-0 min-h-screen duration-300 ease-linear z-50 w-full lg:shadow-none max-w-[250px] 2xl:max-w-[300px] flex flex-col justify-between bg-white p-3.5 ${open ? "left-0 shadow-4xl" : "-left-full"}`}>
                 <div className="mt-12 pt-1">
                     <Link href='/' className='mx-auto w-fit flex'>
                         <Icon iconName='ainIcon' />
