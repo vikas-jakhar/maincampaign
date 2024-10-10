@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { COUNTIRES_DATA, ALLCOUNTRY_DATA } from "@/utils/Helper";
 import AgeGroupChart from "./AgeGroupChart";
-// import WorldMap from "./WorldMap";
+import WorldMap from "./WorldMap";
 
 interface Country {
     name: string;
@@ -33,7 +33,7 @@ const Map = () => {
             <div className="flex gap-3 items-start justify-between flex-col xl:flex-row">
                 <div className="flex flex-col max-w-[1054px] w-full">
                     <p className="text-xl text-off-gray font-bold font-thicccboi-bold mb-7">Your top demographics</p>
-                    {/* <WorldMap /> */}
+                    <WorldMap />
                 </div>
                 <div className="xl:max-w-[376px] mt-14 xl:mt-0 w-full xl:border-s xl:border-medium-gray h-full lg:pl-3 relative">
                     <p className="font-semibold font-thicccboi-semiBold text-3xl ml-5 flex items-center gap-2">225.25k</p>
