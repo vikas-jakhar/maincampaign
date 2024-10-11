@@ -33,8 +33,6 @@
     src: url('../app/font/thicccboi/THICCCBOI-Medium.ttf');
 }
 
-/* CSS to hide zoom buttons */
 .jvectormap-zoomin, .jvectormap-zoomout {
     display: none !important;
-    /* Hides the zoom buttons */
 }

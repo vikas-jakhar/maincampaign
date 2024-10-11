@@ -11,9 +11,9 @@ const WorldMap: React.FC = () => {
         series={{
           regions: [
             {
-              values: {}, // No specific values, we will set the default fill color
+              values: {}, 
               scale: {
-                default: "#ECECEC", // Default color for regions (gray)
+                default: "#ECECEC", 
               },
               attribute: "fill",
             },
@@ -21,15 +21,15 @@ const WorldMap: React.FC = () => {
         }}
         regionStyle={{
           initial: {
-            fill: "#ECECEC", // Default fill color for countries  
-            strokeWidth: 0.5, // Correct property for stroke width
-            stroke: "#000000", // Border color (black)
+            fill: "#ECECEC", 
+            strokeWidth: 0.5, 
+            stroke: "#000000", 
           },
           hover: {
-            fill: "#3B5998", // Hover color for regions
+            fill: "#3B5998", 
           },
           selected: {
-            fill: "#3c8dbc", // Color for selected region
+            fill: "#3c8dbc", 
           },
         }}
       />
