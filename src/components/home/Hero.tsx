@@ -31,7 +31,7 @@ const Hero = () => {
                     <div className="flex items-center flex-col sm:flex-row justify-between">
                         <div className="flex items-center mt-2">
                             {[...Array(4)].map((_, idx) => (
-                                <button id={idx === 0 ? "hours" : idx === 1 ? "days" : idx === 2 ? "months" : "1 year"} key={idx} onClick={() => handleToggle(idx)} className={`font-medium text-sm font-thicccboi-medium backdrop-blur-xl h-10 border transition_slow hover:scale-95 rounded-full ${activeIndex === idx ? "bg-deep-blue border-deep-blue text-white" : "border-light-gray text-off-gray bg-off-white"} ${idx === 0 ? "w-[70px] sm:w-[87px]" : "w-[70px] sm:w-[77px] mx-1 sm:mx-2"}`}>
+                                <button id={idx === 0 ? "hours" : idx === 1 ? "days" : idx === 2 ? "months" : "year"} key={idx} onClick={() => handleToggle(idx)} className={`font-medium text-sm font-thicccboi-medium backdrop-blur-xl h-10 border transition_slow hover:scale-95 rounded-full ${activeIndex === idx ? "bg-deep-blue border-deep-blue text-white" : "border-light-gray text-off-gray bg-off-white"} ${idx === 0 ? "w-[70px] sm:w-[87px]" : "w-[70px] sm:w-[77px] mx-1 sm:mx-2"}`}>
                                     {idx === 0 ? "24 hours" : idx === 1 ? "7 days" : idx === 2 ? "30 days" : "1 year"}
                                 </button>
                             ))}
@@ -39,7 +39,7 @@ const Hero = () => {
                         <div className="flex items-center my-2">
                             <button id='date' onClick={openDatePicker} className="w-[50px] h-[50px] transition_slow hover:scale-95 ml-2.5 overflow-hidden relative grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
                                 <Icon iconName='calendarIcon' className='cursor-pointer relative z-10' />
-                                <input ref={dateInputRef} type="date" className='right-0 opacity-0 absolute -bottom-1/2 left-0' />
+                                <input id='calendar' ref={dateInputRef} type="date" className='right-0 opacity-0 absolute -bottom-1/2 left-0' />
                             </button>
 
                             {[...Array(2)].map((_, index) => (
