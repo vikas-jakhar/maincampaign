@@ -1,13 +1,39 @@
-const WorldMap = () => {
+"use client";
+import { VectorMap } from "@react-jvectormap/core";
+import { worldMill } from "@react-jvectormap/world";
+
+const WorldMap: React.FC = () => {
   return (
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d56514336.19794968!2d79.76784271515407!3d26.512776255350897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1728558661313!5m2!1sen!2sin"
-      className="max-w-[1042px] w-full h-[250px] sm:h-[496px]"
-      allowFullScreen
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-      title="worldMap"
-    ></iframe>
+    <div className='max-w-[1042px] w-full h-[250px] sm:h-[400px] xl:h-[500px]'>
+      <VectorMap
+        map={worldMill}
+        backgroundColor="white"
+        series={{
+          regions: [
+            {
+              values: {}, // No specific values, we will set the default fill color
+              scale: {
+                default: "#ECECEC", // Default color for regions (gray)
+              },
+              attribute: "fill",
+            },
+          ],
+        }}
+        regionStyle={{
+          initial: {
+            fill: "#ECECEC", // Default fill color for countries  
+            strokeWidth: 0.5, // Correct property for stroke width
+            stroke: "#000000", // Border color (black)
+          },
+          hover: {
+            fill: "#3B5998", // Hover color for regions
+          },
+          selected: {
+            fill: "#3c8dbc", // Color for selected region
+          },
+        }}
+      />
+    </div>
   );
 };
 
