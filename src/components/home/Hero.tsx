@@ -37,18 +37,18 @@ const Hero = () => {
                             ))}
                         </div>
                         <div className="flex items-center my-2">
-                            <button onClick={openDatePicker} className="w-[50px] h-[50px] transition_slow hover:scale-95 ml-2.5 overflow-hidden relative grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
+                            <button name='date' onClick={openDatePicker} className="w-[50px] h-[50px] transition_slow hover:scale-95 ml-2.5 overflow-hidden relative grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
                                 <Icon iconName='calendarIcon' className='cursor-pointer relative z-10' />
                                 <input ref={dateInputRef} type="date" className='right-0 opacity-0 absolute -bottom-1/2 left-0' />
                             </button>
 
                             {[...Array(2)].map((_, index) => (
-                                <button key={index} className="w-[50px] h-[50px] transition_slow hover:scale-95 ml-3.5 grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
+                                <button name={index === 0 ? "setting" : "icon"} key={index} className="w-[50px] h-[50px] transition_slow hover:scale-95 ml-3.5 grid place-items-center border-light-gray text-off-gray bg-off-white border rounded-xl">
                                     <Icon iconName={index === 0 ? "graySettingIcon" : "bellIcon"} className='cursor-pointer relative z-10' />
                                 </button>
                             ))}
                         </div>
-                        <button className="relative w-[57px] h-[57px] ml-7 pl-0.5 transition_slow hover:scale-95">
+                        <button name='profile' className="relative w-[57px] h-[57px] ml-7 pl-0.5 transition_slow hover:scale-95">
                             <Image src='/assets/images/webp/logo.webp' className='max-w-[57px] w-full' alt='icon' width={114} height={114} priority />
                             <Icon iconName='tickIcon' className='absolute bottom-0 -right-1.5' />
                         </button>

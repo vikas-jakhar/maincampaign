@@ -6,6 +6,7 @@ const WorldMap = () => {
       allowFullScreen
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
+      title="worldMap"
     ></iframe>
   );
 };

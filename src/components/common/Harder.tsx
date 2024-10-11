@@ -44,13 +44,13 @@ const Harder = () => {
                     ))}
                     <p className='mt-8 ml-6 uppercase text-deep-blue font-thicccboi-semiBold font-semibold text-sm tracking-[0.25em]'>MORE</p>
                     {[...Array(2)].map((_, index) => (
-                        <Link key={index} href='/' className='flex items-center transition_slow hover:scale-95 ml-6 font-thicccboi-semiBold mt-5 gap-6 font-semibold text-sm text-off-gray'>
+                        <Link key={index} href='/' className='flex items-center transition_slow w-fit hover:scale-95 ml-6 font-thicccboi-semiBold mt-5 gap-6 font-semibold text-sm text-off-gray'>
                             <Icon iconName={index === 0 ? "settingIcon" : "supportIcon"} />
                             {index === 0 ? "Settings" : "Support"}
                         </Link>
                     ))}
                 </div>
-                <Link href='/' className='flex items-center transition_slow hover:scale-95 ml-8 mb-2 font-thicccboi-semiBold mt-5 gap-3.5 font-semibold text-sm text-off-red'>
+                <Link href='/' className='flex items-center transition_slow w-fit hover:scale-95 ml-8 mb-2 font-thicccboi-semiBold mt-5 gap-3.5 font-semibold text-sm text-off-red'>
                     <Icon iconName='logoutIcon' />
                     Logout
                 </Link>
